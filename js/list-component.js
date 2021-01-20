@@ -1,0 +1,11 @@
+alert('estou aqui')
+
+Vue.component('my-list', {
+    template: `
+        <li class="poke-list-item">
+            <img :src="'//serebii.net/pokedex-xy/icon/'+pokemon.number+'.png'" alt="" />
+            <span>{{pokemon.number | pokeNumber}}- {{pokemon.name}}</span>
+        </li>
+    ` ,
+    props: ['pokemon']
+})
