@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokredex App</title>
+    <title>PokéDex</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 
-    <div id="app">
-        <img src="//hanashiro.github.io/pokedex/images/pokeball.svg" alt="" class="pokeball-back">
-        <input type="text" id="pokeFilter" placeholder="search" maxlength="20">
+    <div id="app" >
+        <img v-rotate-on-scroll src="//hanashiro.github.io/pokedex/images/pokeball.svg" class="pokeball-back" >
+      
 
-        <ul class="poke-list">
-          <my-list v-for="item in pokemonList" :pokemon="item" :key="item.number"></my-list>
-        </ul>
-
+        <router-view></router-view>
     </div>
 
 
 
+    <script src="https://unpkg.com/vue/dist/vue.js" ></script>
+    <script src="https://unpkg.com/vue-router" ></script>
 
-
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="./js/app.js"></script>
-    <script src="./js/filter.js"></script>
+    <script src="./js/services.js"></script>
+    <script src="./js/filters.js"></script>
+    <script src="./js/directives.js"></script>
+    <script src="./js/home-page-component.js"></script>
     <script src="./js/list-component.js"></script>
+    <script src="./js/routes.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>

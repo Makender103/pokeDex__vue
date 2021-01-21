@@ -1,11 +1,17 @@
-alert('estou aqui')
-
 Vue.component('my-list', {
     template: `
-        <li class="poke-list-item">
-            <img :src="'//serebii.net/pokedex-xy/icon/'+pokemon.number+'.png'" alt="" />
-            <span>{{pokemon.number | pokeNumber}}- {{pokemon.name}}</span>
+        <li class="poke-list-item" >
+            <img :src="sprite" />
+            <span>{{pokemon.number | pokeNumber}} - {{pokemon.name}}</span>
         </li>
-    ` ,
-    props: ['pokemon']
+    `,
+    props: ['pokemon'],
+    computed: {
+        number: function(){
+            return Vue.filter('pokeNumber')(this.pokemon.number);
+        },
+        sprite: function(){
+            return `//serebii.net/pokedex-xy/icon/${this.number}.png`
+        }
+    }
 })

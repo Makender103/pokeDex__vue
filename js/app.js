@@ -1,13 +1,19 @@
-const app = new Vue ({
+const app = new Vue({
     el: '#app',
+    router: myRouter,
     data: {
-        pokemonList: [
-            {name: 'Charizard', number: 006},
-            {name: 'Squirtle', number: 007},
-            {name: 'Pikachu', number: 025},
-            {name: 'Celebi', number: 0251},
-            {name: 'Lucario', number: 448},
-            {name: 'Delphox', number: 655}
-        ]
+        pokemonList: [],
+        nameFilter: ''
+    },
+    mounted: function(){
+      PokeService.API.Pokemon.listAll().then(pokemonList => {
+          this.pokemonList = pokemonList;
+      })
+    },
+    computed: {
+        pokeList: function(){
+            var nameFilter = this.nameFilter.toLowerCase();
+            return this.pokemonList.filter( pokemon => pokemon.name.includes(nameFilter) )
+        }
     }
 })
